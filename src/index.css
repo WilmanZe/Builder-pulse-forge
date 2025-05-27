@@ -99,3 +99,41 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .dashboard-card {
+    @apply relative;
+  }
+
+  .dashboard-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(6, 182, 212, 0.3),
+      rgba(34, 197, 94, 0.3),
+      transparent
+    );
+    border-radius: inherit;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .dashboard-card:hover::before {
+    opacity: 1;
+  }
+
+  .dashboard-card:hover {
+    box-shadow:
+      0 0 20px rgba(6, 182, 212, 0.3),
+      0 0 40px rgba(34, 197, 94, 0.2),
+      0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+}
